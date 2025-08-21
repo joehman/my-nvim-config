@@ -6,5 +6,6 @@ require("lazy").setup({
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "L3MON4D3/LuaSnip" },
-    { "morhetz/gruvbox" }, -- or your favorite theme
+    { "morhetz/gruvbox" },
+    { "hrsh7th/cmp-nvim-lsp-signature-help" },
 })
