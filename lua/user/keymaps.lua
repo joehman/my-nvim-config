@@ -4,8 +4,6 @@ local opts = { noremap = true, silent = true }
 
 map("n", "<Space>", "<Nop>", opts)
 
-map("n", "<C-w>", ":w<CR>", opts)
-map("n", "<C-q>", ":q<CR>", opts)
 map("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
 
 map("n", "<C-h>", "<C-w>h", opts)
@@ -14,3 +12,4 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
 map("i", "jk", "<ESC>", opts)
+map("n", "<ESC>", ":noh<CR>", opts)
