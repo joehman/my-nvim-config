@@ -8,4 +8,9 @@ vim.opt.wrap = false
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.confirm = true
+
 vim.opt.scrolloff = 7

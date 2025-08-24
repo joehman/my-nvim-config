@@ -13,3 +13,9 @@ map("n", "<C-l>", "<C-w>l", opts)
 
 map("i", "jk", "<ESC>", opts)
 map("n", "<ESC>", ":noh<CR>", opts)
+
+map("n", "<C-p>", vim.diagnostic.open_float, opts) -- open erros in a window
+
+map("n", "gd", vim.lsp.buf.declaration)
+map("n", "gi", vim.lsp.buf.implementation)
+map("n", "gr", vim.lsp.buf.references)
