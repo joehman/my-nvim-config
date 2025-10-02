@@ -8,4 +8,5 @@ require("lazy").setup({
     { "L3MON4D3/LuaSnip" },
     { "morhetz/gruvbox" },
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
+    { "mason-org/mason.nvim", opts = {}}
 })
