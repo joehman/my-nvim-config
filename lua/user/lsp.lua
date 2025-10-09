@@ -12,6 +12,13 @@ lspconfig.lua_ls.setup {
         Lua = {
             diagnostics = { globals = { "vim" } },
         },
+        format = {
+            enable = true,
+            tabSize = 4
+        },
+        completion = {
+            callSnippet = "Replace";
+        },
     },
 }
 
@@ -25,6 +32,16 @@ lspconfig.clangd.setup {
     },
     filetypes = { "c", "cpp", "objc", "objcpp" },
     root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+}
+
+lspconfig.html.setup {
+    capabilities = capabilities;
+}
+lspconfig.cssls.setup = {
+    capabilities = capabilities;
+}
+lspconfig.tsserver.setup = {
+    capabilities = capabilities;
 }
 
 -- Completion
@@ -42,7 +59,9 @@ cmp.setup({
     }),
     sources = {
         { name = "nvim_lsp" },
-        { name = "nvim_lsp_signature_help"},
+        { name = "luasnip" },
+        { name = "path" },
+        { name = "nvim_lsp_signature_help"}
     },
 })
 

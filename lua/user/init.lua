@@ -3,5 +3,4 @@ require("user.keymaps")
 require("user.plugins")
 require("user.lsp")
 
-
 vim.cmd.colorscheme("gruvbox")
