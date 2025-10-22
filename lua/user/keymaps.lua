@@ -22,9 +22,10 @@ map("n", "<C-p>", vim.diagnostic.open_float, opts) -- open erros in a window
 
 
 -- Telescope
-map("n", "fg", ":Telescope find_files<CR>", opts)
+map("n", "gf", ":Telescope find_files<CR>", opts)
 
 -- for clangd
 map("n", "gd", vim.lsp.buf.declaration)
 map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gr", vim.lsp.buf.references)
+map("n", "gs", require("telescope.builtin").lsp_workspace_symbols, opts); -- find symbol
