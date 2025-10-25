@@ -12,7 +12,18 @@ require("lazy").setup({
     { "windwp/nvim-ts-autotag", ft = {"html", "javascriptreact", "typescriptreact"} },
     { "kylechui/nvim-surround", lazy = false, config = true},
     { "Jezda1337/nvim-html-css", dependencies = {"nvim-treesitter/nvim-treesitter"}, opts = {}},
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects"
+        },
+
+        config = function()
+            require('user.config.treesitter')
+        end
+    },
 
     {
         "nvim-telescope/telescope.nvim",

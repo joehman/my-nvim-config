@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- lua/user/options.lua
 vim.opt.number = true
 vim.opt.tabstop = 4
