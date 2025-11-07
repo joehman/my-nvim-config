@@ -14,6 +14,8 @@ map("n", "<C-l>", "<C-w>l", opts)
 
 -- enter normal mode with jk  
 map("i", "jk", "<ESC>", opts)
+map("i", "Jk", "<ESC>", opts)
+map("i", "jl", "<ESC>", opts)
 
 -- clear / searches
 map("n", "<ESC>", ":noh<CR>", opts)
