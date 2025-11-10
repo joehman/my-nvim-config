@@ -20,8 +20,12 @@ map("i", "jl", "<ESC>", opts)
 -- clear / searches
 map("n", "<ESC>", ":noh<CR>", opts)
 
-map("n", "<C-p>", vim.diagnostic.open_float, opts) -- open erros in a window
+-- open erros in a window
+map("n", "<C-p>", vim.diagnostic.open_float, opts) 
 
+-- bind f5 to run the program
+map("n", "<F5>", ":make run<CR>")
+map("i", "<F5>", "<ESC>:make run<CR>")
 
 -- Telescope
 map("n", "gf", ":Telescope find_files<CR>", opts)
