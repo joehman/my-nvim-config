@@ -27,24 +27,11 @@ lspconfig.clangd.setup {
     cmd = {
         "clangd",
         "--background-index",
-        "--clang-tidy",
         "--completion-style=detailed",
+        "--cross-file-rename"
     },
     filetypes = { "c", "cpp", "objc", "objcpp" },
     root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-}
-
-lspconfig.html.setup = {
-    capabilities = capabilities;
-}
-lspconfig.cssls.setup = {
-    capabilities = capabilities;
-}
-lspconfig.tsserver.setup = {
-    capabilities = capabilities;
-}
-lspconfig.rust_analyzer.setup = {
-    capabilities = capabilities;
 }
 
 -- Completion
@@ -75,6 +62,6 @@ vim.diagnostic.config({
     },
     signs = false,
     underline = true,
-    update_in_insert = false,
+    update_in_insert = true,
     severity_sort = true
 })

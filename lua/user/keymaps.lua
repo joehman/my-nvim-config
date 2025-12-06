@@ -14,21 +14,85 @@ map("n", "<C-l>", "<C-w>l", opts)
 
 -- enter normal mode with jk  
 map("i", "jk", "<ESC>", opts)
+map("i", "Jk", "<ESC>", opts)
+map("i", "jl", "<ESC>", opts)
 
 -- clear / searches
 map("n", "<ESC>", ":noh<CR>", opts)
 
-map("n", "<C-p>", vim.diagnostic.open_float, opts) -- open erros in a window
+-- open erros in a window
+map("n", "<C-p>", vim.diagnostic.open_float, opts) 
 
+-- bind f5 to run the program
+map("n", "<F5>", ":make run<CR>")
+map("i", "<F5>", "<ESC>:make run<CR>")
 
 -- Telescope
 map("n", "gf", ":Telescope find_files<CR>", opts)
+map("n", "gp", ":Telescope live_grep<CR>", opts)
 
 -- for clangd
 map("n", "gd", vim.lsp.buf.declaration)
 map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gr", vim.lsp.buf.references)
 map("n", "gs", require("telescope.builtin").lsp_workspace_symbols, opts); -- find symbol
+
+map("n", "rn", vim.lsp.buf.rename)
+
+-- nvim-dap (debugging)
+local dap = require("dap");
+map("n", "<leader>db",
+    function()
+        dap.toggle_breakpoint()
+    end, opts
+)
+map("n", "<leader>dc",
+    function()
+        dap.continue()
+    end, opts
+)
+map("n", "<leader>do",
+    function()
+        dap.step_over()
+    end, opts
+)
+map("n", "<leader>di",
+    function()
+        dap.step_into()
+    end, opts
+)
+map("n", "<leader>du",
+    function()
+        dap.step_out()
+    end, opts
+)
+map("n", "<leader>du",
+    function()
+        dap.step_out()
+    end, opts
+)
+map("n", "<leader>dr", -- open REPL
+    function()
+        dap.repl.open()
+    end, opts
+)
+map("n", "<leader>dl",
+    function()
+        dap.run_last()
+    end, opts
+)
+map("n", "<leader>dq",
+    function()
+        dap.terminate()
+        require("dapui").close()
+        require("nvim-dap-virtual-text").toggle()
+    end, opts
+)
+map("n", "<leader>dp",
+    function()
+        dap.list_breakpoints()
+    end, opts
+)
 
 -- thanks chatgpt!
 local ts_select = require("nvim-treesitter.textobjects.select")
