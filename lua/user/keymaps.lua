@@ -53,19 +53,19 @@ end, { desc = "Select around argument" })
 -- =============================
 
 vim.keymap.set("n", "<leader>nf", function()
-  ts_move.goto_next_start("@function.outer")
+  ts_move.goto_next_start("@function.inner")
 end, { desc = "Next function" })
 
 vim.keymap.set("n", "<leader>bf", function()
-  ts_move.goto_previous_start("@function.outer")
+  ts_move.goto_previous_start("@function.inner")
 end, { desc = "Previous function" })
 
 vim.keymap.set("n", "<leader>nc", function()
-  ts_move.goto_next_start("@class.outer")
+  ts_move.goto_next_start("@class.inner")
 end, { desc = "Next class" })
 
 vim.keymap.set("n", "<leader>bc", function()
-  ts_move.goto_previous_start("@class.outer")
+  ts_move.goto_previous_start("@class.inner")
 end, { desc = "Previous class" })
 
 vim.keymap.set("n", "<leader>na", function()

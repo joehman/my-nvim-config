@@ -34,13 +34,16 @@ lspconfig.clangd.setup {
     root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
 }
 
-lspconfig.html.setup {
+lspconfig.html.setup = {
     capabilities = capabilities;
 }
 lspconfig.cssls.setup = {
     capabilities = capabilities;
 }
 lspconfig.tsserver.setup = {
+    capabilities = capabilities;
+}
+lspconfig.rust_analyzer.setup = {
     capabilities = capabilities;
 }
 
