@@ -34,6 +34,10 @@ lspconfig.clangd.setup {
     root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
 }
 
+lspconfig.glsl_analyzer.setup {
+    capabilities = capabilities
+}
+
 -- Completion
 cmp.setup({
     snippet = {

@@ -21,7 +21,8 @@ map("i", "jl", "<ESC>", opts)
 map("n", "<ESC>", ":noh<CR>", opts)
 
 -- open erros in a window
-map("n", "<C-p>", vim.diagnostic.open_float, opts) 
+map("n", "<C-p>", vim.diagnostic.open_float, opts)
+map("n", "<C-o>", vim.lsp.buf.hover, opts)
 
 -- bind f5 to run the program
 map("n", "<F5>", ":make run<CR>")
