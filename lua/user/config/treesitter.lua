@@ -8,5 +8,6 @@ ts.setup({
     textobjects = {
         select = { enable = true, lookahead = true },
         move = { enable = true, set_jumps = true },
+        set_jumps = true
     },
 })
