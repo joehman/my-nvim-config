@@ -46,7 +46,11 @@ map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gr", vim.lsp.buf.references)
 map("n", "gs", require("telescope.builtin").lsp_workspace_symbols, opts); -- find symbol
 
+-- rename symbol
 map("n", "rn", vim.lsp.buf.rename)
+
+-- apply fixes
+map("n", "fx", vim.lsp.buf.code_action)
 
 
 -- thanks chatgpt!

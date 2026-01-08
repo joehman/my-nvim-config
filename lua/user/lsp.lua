@@ -1,12 +1,12 @@
 
-local lspconfig = require("lspconfig")
+local lspconfig = vim.lsp.config;
 
 local cmp = require("cmp")
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.pyright.setup { capabilities = capabilities }
-lspconfig.lua_ls.setup {
+lspconfig('pyright', { capabilities = capabilities })
+
+lspconfig('lua_ls', {
     capabilities = capabilities,
     settings = {
         Lua = {
@@ -20,9 +20,9 @@ lspconfig.lua_ls.setup {
             callSnippet = "Replace";
         },
     },
-}
+})
 
-lspconfig.clangd.setup {
+lspconfig('clangd', {
     capabilities = capabilities,
     cmd = {
         "clangd",
@@ -30,13 +30,17 @@ lspconfig.clangd.setup {
         "--completion-style=detailed",
         "--cross-file-rename"
     },
-    filetypes = { "c", "cpp", "objc", "objcpp" },
-    root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-}
+    filetypes = { "cc", "hpp", "h", "c", "cpp", "objc", "objcpp" },
+    root_markers = {"compile_commands.json", "compile_flags.txt", ".git"},
+})
 
-lspconfig.glsl_analyzer.setup {
+lspconfig('glsl_analyzer', {
     capabilities = capabilities
-}
+})
+
+lspconfig('tsserver',{capabilities = capabilities})
+lspconfig('html', {capabilities = capabilities})
+lspconfig('cssls', {capabilities = capabilities})
 
 -- Completion
 cmp.setup({

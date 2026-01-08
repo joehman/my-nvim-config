@@ -42,4 +42,16 @@ require("lazy").setup({
             require("user.config.debug")
         end
     },
+
+    {
+        "nvim-orgmode/orgmode",
+        event = "VeryLazy",
+        ft = { org },
+        config = function()
+            require("orgmode").setup({
+                org_agenda_files = "~/Documents/agendafiles/**/*",
+                org_default_notes_file = "~/Documents/agendafiles/notes.org"
+            })    
+        end
+    }
 })
