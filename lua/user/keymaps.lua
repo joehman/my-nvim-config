@@ -2,9 +2,10 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map("n", "<Space>", "<Nop>", opts)
+map("n", "ö", ":");
 
-map("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
+map("n", "<C-m>", ":Explore<CR>", opts)
+map("n", "<C-n>", ":Hexplore<CR>", opts)
 
 -- switch between windows
 map("n", "<C-h>", "<C-w>h", opts)
@@ -27,7 +28,6 @@ map("n", "<C-p>", vim.diagnostic.open_float, opts)
 -- open definitions in a window
 map("n", "<C-o>", vim.lsp.buf.hover, opts)
 
-map("n", "o", require("nvim-tree.api").tree.change_root_to_node, opts);
 map("n", "gb", "<C-o>", opts)
 map("n", "gn", "<C-I>", opts)
 

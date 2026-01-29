@@ -1,5 +1,4 @@
 require("lazy").setup({
-    { "nvim-tree/nvim-tree.lua", config = true },
     { "neovim/nvim-lspconfig" },
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp" },
@@ -21,7 +20,6 @@ require("lazy").setup({
         },
 
         config = function()
-            require('user.config.treesitter')
         end
     },
 

@@ -41,6 +41,8 @@ lspconfig('glsl_analyzer', {
 lspconfig('tsserver',{capabilities = capabilities})
 lspconfig('html', {capabilities = capabilities})
 lspconfig('cssls', {capabilities = capabilities})
+lspconfig('qmlls', {capabilities = capabilities})
+
 
 -- Completion
 cmp.setup({
