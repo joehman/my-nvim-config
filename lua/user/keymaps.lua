@@ -14,6 +14,11 @@ map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
+-- split window
+map("n", "ss", ":split<CR>", opts) -- horisontally
+map("n", "sv", ":vsplit<CR>", opts) -- vertically
+
+
 -- enter normal mode with jk  
 -- there's alot of these because I keep missclicking this
 map("i", "jk", "<ESC>", opts)
