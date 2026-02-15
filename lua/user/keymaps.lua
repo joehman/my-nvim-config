@@ -6,6 +6,7 @@ map("n", "ö", ":");
 
 map("n", "<C-m>", ":Explore<CR>", opts)
 map("n", "<C-n>", ":Hexplore<CR>", opts)
+vim.keymap.del('n', '<CR>') -- so that netrw doesn't open on <CR>
 
 -- switch between windows
 map("n", "<C-h>", "<C-w>h", opts)
@@ -44,7 +45,7 @@ map("n", "gh", ":Telescope diagnostics<CR>", opts)
 map("n", "gd", vim.lsp.buf.declaration)
 map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gr", vim.lsp.buf.references)
-map("n", "gs", require("telescope.builtin").lsp_workspace_symbols, opts); -- find symbol
+map("n", "gs", require("telescope.builtin").lsp_dynamic_workspace_symbols , opts); -- find symbol
 
 -- rename symbol
 map("n", "rn", vim.lsp.buf.rename)
