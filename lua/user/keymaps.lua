@@ -4,9 +4,13 @@ local opts = { noremap = true, silent = true }
 
 map("n", "ö", ":");
 
-map("n", "<C-m>", ":Explore<CR>", opts)
 map("n", "<C-n>", ":Hexplore<CR>", opts)
-vim.keymap.del('n', '<CR>') -- so that netrw doesn't open on <CR>
+map("n", "<C-b>", ":Explore<CR>", opts)
+-- vim.keymap.del('n', '<CR>') -- so that netrw doesn't open on <CR>
+
+-- Go to normal mode in the terminal with ESC and jk
+map("t", "<ESC>", [[<C-\><C-n>]])
+map("t", "jk", [[<C-\><C-n>]])
 
 -- switch between windows
 map("n", "<C-h>", "<C-w>h", opts)
@@ -17,7 +21,6 @@ map("n", "<C-l>", "<C-w>l", opts)
 -- split window
 map("n", "ss", ":split<CR>", opts) -- horisontally
 map("n", "sv", ":vsplit<CR>", opts) -- vertically
-
 
 -- enter normal mode with jk  
 -- there's alot of these because I keep missclicking this
@@ -34,9 +37,6 @@ map("n", "<C-p>", vim.diagnostic.open_float, opts)
 -- open definitions in a window
 map("n", "<C-o>", vim.lsp.buf.hover, opts)
 
-map("n", "gb", "<C-o>", opts)
-map("n", "gn", "<C-I>", opts)
-
 -- bind f5 to run the program
 map("n", "<F5>", ":make run<CR>")
 map("i", "<F5>", "<ESC>:make run<CR>")
@@ -45,6 +45,7 @@ map("i", "<F5>", "<ESC>:make run<CR>")
 map("n", "gf", ":Telescope find_files<CR>", opts)
 map("n", "gp", ":Telescope live_grep<CR>", opts)
 map("n", "gh", ":Telescope diagnostics<CR>", opts)
+map("n", "gb", ":Telescope buffers<CR>", opts)
 
 -- for clangd
 map("n", "gd", vim.lsp.buf.declaration)

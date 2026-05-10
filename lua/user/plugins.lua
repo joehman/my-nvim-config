@@ -20,6 +20,7 @@ require("lazy").setup({
         },
 
         config = function()
+            require('user.config.treesitter')
         end
     },
 
