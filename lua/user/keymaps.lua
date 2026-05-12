@@ -59,9 +59,8 @@ map("n", "fx", vim.lsp.buf.code_action)
 
 
 -- thanks chatgpt!
-local ts_select = require("nvim-treesitter.textobjects.select")
-local ts_move = require("nvim-treesitter.textobjects.move")
-local ts_is = require("nvim-treesitter.incremental_selection")
+local ts_select = require("nvim-treesitter-textobjects.select")
+local ts_move = require("nvim-treesitter-textobjects.move")
 
 -- =============================
 -- 📦 Argument Textobjects
@@ -103,27 +102,6 @@ end, { desc = "Next argument" })
 vim.keymap.set("n", "<leader>ba", function()
   ts_move.goto_previous_start("@parameter.inner")
 end, { desc = "Previous argument" })
-
-
--- =============================
--- 🪄 Incremental Selection
--- =============================
-
-vim.keymap.set("n", "gnn", function()
-  ts_is.init_selection()
-end, { desc = "Init incremental selection" })
-
-vim.keymap.set("n", "grn", function()
-  ts_is.node_incremental()
-end, { desc = "Increment node selection" })
-
-vim.keymap.set("n", "grc", function()
-  ts_is.scope_incremental()
-end, { desc = "Increment scope selection" })
-
-vim.keymap.set("n", "grm", function()
-  ts_is.node_decremental()
-end, { desc = "Decrement node selection" })
 
 -- =============================
 -- 🧠 Textobject Selection (Functions & Classes)
