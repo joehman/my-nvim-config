@@ -2,11 +2,18 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+vim.keymap.set("n", "<leader>cc", function()
+  vim.ui.input({ prompt = "Compile command: " }, function(cmd)
+    if cmd and cmd ~= "" then
+      vim.cmd("!" .. cmd)
+    end
+  end)
+end, { desc = "Compile" })
+
 map("n", "ö", ":");
 
 map("n", "<C-n>", ":Hexplore<CR>", opts)
 map("n", "<C-b>", ":Explore<CR>", opts)
--- vim.keymap.del('n', '<CR>') -- so that netrw doesn't open on <CR>
 
 -- Go to normal mode in the terminal with ESC and jk
 map("t", "<ESC>", [[<C-\><C-n>]])
@@ -57,6 +64,29 @@ map("n", "rn", vim.lsp.buf.rename)
 -- apply fixes
 map("n", "fx", vim.lsp.buf.code_action)
 
+vim.keymap.set({'n', 'v'}, '<leader>me', function()
+  local mode = vim.fn.mode()
+  local text
+
+  if mode == 'v' or mode == 'V' then
+    vim.cmd('noau normal! "vy')
+    text = vim.fn.getreg('v')
+  else
+    text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
+  end
+
+  local result = vim.fn.system('cc -E -P -', text)
+
+  -- open a new split, never touches your original buffer
+  vim.cmd('botright new')
+  local buf = vim.api.nvim_get_current_buf()
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(result, '\n'))
+  vim.bo[buf].filetype = 'c'
+  vim.bo[buf].buftype = 'nofile'   -- not backed by a file
+  vim.bo[buf].bufhidden = 'wipe'   -- disappears when you close it
+  vim.bo[buf].modifiable = false
+  vim.keymap.set('n', 'q', '<cmd>bd!<cr>', { buffer = buf })
+end, { desc = 'Expand C macros into scratch buffer' })
 
 -- thanks chatgpt!
 local ts_select = require("nvim-treesitter.textobjects.select")
