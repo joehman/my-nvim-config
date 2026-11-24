@@ -23,14 +23,3 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.formatoptions:append("t")
     end
 })
-
--- netrw
-vim.g.netrw_list_hide = [[^\.[^.]]
-vim.g.netrw_hide = 1
-vim.g.netrw_hide = 1
-
-vim.g.netrw_liststyle = 1
-vim.g.netrw_alto = 1
-vim.g.netrw_banner = 0
-vim.g.netrw_hide = 1
-vim.g.netrw_fastbrowse = 2

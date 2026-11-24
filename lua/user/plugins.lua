@@ -11,7 +11,6 @@ require("lazy").setup({
     { "windwp/nvim-ts-autotag", ft = {"html", "javascriptreact", "typescriptreact"} },
     { "kylechui/nvim-surround", lazy = false, config = true},
     { "Jezda1337/nvim-html-css", dependencies = {"nvim-treesitter/nvim-treesitter"}, opts = {}},
-
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -23,12 +22,10 @@ require("lazy").setup({
             require('user.config.treesitter')
         end
     },
-
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
-
     {
         "mfussenegger/nvim-dap",
         dependencies = {
@@ -41,7 +38,6 @@ require("lazy").setup({
             require("user.config.debug")
         end
     },
-
     {
         "nvim-orgmode/orgmode",
         event = "VeryLazy",
@@ -51,6 +47,21 @@ require("lazy").setup({
                 org_agenda_files = "~/Documents/agendafiles/**/*",
                 org_default_notes_file = "~/Documents/agendafiles/notes.org"
             })    
+        end
+    },
+    {
+        "nvim-tree/nvim-tree.lua",
+        lazy = false,
+
+        config = function()
+            require("nvim-tree").setup({
+                hijack_cursor = true,
+
+                view = {
+                    -- display on right edge of terminal
+                    side = "right"
+                }
+            })
         end
     }
 })

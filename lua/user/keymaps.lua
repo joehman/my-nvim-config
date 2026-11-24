@@ -12,8 +12,7 @@ end, { desc = "Compile" })
 
 map("n", "ö", ":");
 
-map("n", "<C-n>", ":Hexplore<CR>", opts)
-map("n", "<C-b>", ":Explore<CR>", opts)
+map("n", "<C-n>", ":NvimTreeOpen<CR>", opts)
 
 -- Go to normal mode in the terminal with ESC and jk
 map("t", "<ESC>", [[<C-\><C-n>]])
@@ -52,7 +51,7 @@ map("n", "gp", ":Telescope live_grep<CR>", opts)
 map("n", "gh", ":Telescope diagnostics<CR>", opts)
 map("n", "gb", ":Telescope buffers<CR>", opts)
 
--- for clangd
+-- for lsp
 map("n", "gd", vim.lsp.buf.declaration)
 map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gr", vim.lsp.buf.references)
@@ -63,28 +62,3 @@ map("n", "rn", vim.lsp.buf.rename)
 
 -- apply fixes
 map("n", "fx", vim.lsp.buf.code_action)
-
-vim.keymap.set({'n', 'v'}, '<leader>me', function()
-  local mode = vim.fn.mode()
-  local text
-
-  if mode == 'v' or mode == 'V' then
-    vim.cmd('noau normal! "vy')
-    text = vim.fn.getreg('v')
-  else
-    text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
-  end
-
-  local result = vim.fn.system('cc -E -P -', text)
-
-  -- open a new split, never touches your original buffer
-  vim.cmd('botright new')
-  local buf = vim.api.nvim_get_current_buf()
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(result, '\n'))
-  vim.bo[buf].filetype = 'c'
-  vim.bo[buf].buftype = 'nofile'   -- not backed by a file
-  vim.bo[buf].bufhidden = 'wipe'   -- disappears when you close it
-  vim.bo[buf].modifiable = false
-  vim.keymap.set('n', 'q', '<cmd>bd!<cr>', { buffer = buf })
-end, { desc = 'Expand C macros into scratch buffer' })
-
