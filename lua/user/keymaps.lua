@@ -10,7 +10,8 @@ vim.keymap.set("n", "<leader>cc", function()
   end)
 end, { desc = "Compile" })
 
-map("n", "ö", ":");
+map("n", "ä", ";"); -- ; is go to next f search
+map("n", "ö", ","); -- , is go to last f search
 
 map("n", "<C-n>", ":NvimTreeOpen<CR>", opts)
 

@@ -4,8 +4,6 @@ local lspconfig = vim.lsp.config;
 local cmp = require("cmp")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig('pyright', { capabilities = capabilities })
-
 lspconfig('lua_ls', {
     capabilities = capabilities,
     settings = {
@@ -51,10 +49,11 @@ cmp.setup({
             require("luasnip").lsp_expand(args.body)
         end,
     },
+    preselect = cmp.PreselectMode.None,
     mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping.select_next_item(),
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
         ["<C-Space>"] = cmp.mapping.complete(),
     }),
     sources = {
